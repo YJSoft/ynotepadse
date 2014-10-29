@@ -141,3 +141,4 @@ $RECYCLE.BIN/
 .DS_Store
 /log.dat
 *.txt
+YNOTE_*.*

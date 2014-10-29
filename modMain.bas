@@ -5,7 +5,7 @@ Attribute VB_Name = "modMain"
 ' Author    : YJSoft
 ' Purpose   : Y's Notepad SE Main Module
 '---------------------------------------------------------------------------------------
-'Y's Notepad SE V.0.8
+'Y's Notepad SE V.0.9(dev)
 '제작:YJSoft(yjsoft@yjsoft.pe.kr)
 'All rights RESERVED.
 
@@ -27,7 +27,7 @@ Public NewLogFile As Boolean
 Public Const PROGRAM_TITLE = "Y's Notepad SE Beta(V." '프로그램 기본 타이틀
 Public Const PROGRAM_NAME = "Y's Notepad SE" '프로그램 이름
 Public Const PROGRAM_KEY = "YNotepadSE" '프로그램 코드
-Public Const LAST_UPDATED = "2013-09-17(2)" '마지막 업데이트 날짜
+Public Const LAST_UPDATED = "2014-10-29" '마지막 업데이트 날짜
 Public Const LOGFILE = "log.dat" '로그 파일 이름
 Public Const PROGRAM_HELPFILE = "\YNOTEPADSE.chm"
 Public Const DEBUG_VERSION = True
