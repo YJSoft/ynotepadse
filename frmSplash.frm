@@ -31,19 +31,19 @@ Begin VB.Form frmSplash
          BackStyle       =   0  'Åõ¸í
          Caption         =   "¹öÀü"
          BeginProperty Font 
-            Name            =   "±¼¸²"
-            Size            =   12
+            Name            =   "µ¸¿ò"
+            Size            =   8.25
             Charset         =   129
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   285
-         Left            =   6360
+         Height          =   165
+         Left            =   6630
          TabIndex        =   9
          Top             =   3240
-         Width           =   510
+         Width           =   360
       End
       Begin VB.Label lblLastUpdated 
          Alignment       =   1  '¿À¸¥ÂÊ ¸ÂÃã
@@ -51,19 +51,19 @@ Begin VB.Form frmSplash
          BackStyle       =   0  'Åõ¸í
          Caption         =   "¹öÀü"
          BeginProperty Font 
-            Name            =   "±¼¸²"
-            Size            =   12
+            Name            =   "µ¸¿ò"
+            Size            =   9
             Charset         =   129
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   285
-         Left            =   6360
+         Height          =   180
+         Left            =   6600
          TabIndex        =   8
-         Top             =   3000
-         Width           =   510
+         Top             =   2880
+         Width           =   390
       End
       Begin VB.Label lblUser 
          Alignment       =   1  '¿À¸¥ÂÊ ¸ÂÃã
@@ -85,7 +85,7 @@ Begin VB.Form frmSplash
       End
       Begin VB.Label lblWarning 
          BackStyle       =   0  'Åõ¸í
-         Caption         =   "Copyright  (C) 2010-2013 YJSoft.All rights Reserved."
+         Caption         =   "Copyright  (C) 2010-2014 YJSoft.All rights Reserved."
          Height          =   195
          Left            =   120
          TabIndex        =   2
@@ -98,25 +98,25 @@ Begin VB.Form frmSplash
          BackStyle       =   0  'Åõ¸í
          Caption         =   "¹öÀü"
          BeginProperty Font 
-            Name            =   "±¼¸²"
-            Size            =   12
+            Name            =   "µ¸¿ò"
+            Size            =   9
             Charset         =   129
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   288
-         Left            =   6360
+         Height          =   180
+         Left            =   6600
          TabIndex        =   3
          Top             =   2700
-         Width           =   504
+         Width           =   390
       End
       Begin VB.Label lblPlatform 
          Alignment       =   1  '¿À¸¥ÂÊ ¸ÂÃã
          AutoSize        =   -1  'True
          BackStyle       =   0  'Åõ¸í
-         Caption         =   "Windows 2k/XP"
+         Caption         =   "Windows XP/7"
          BeginProperty Font 
             Name            =   "±¼¸²"
             Size            =   15.75
@@ -127,10 +127,10 @@ Begin VB.Form frmSplash
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4620
+         Left            =   4950
          TabIndex        =   4
          Top             =   2340
-         Width           =   2235
+         Width           =   2085
       End
       Begin VB.Label lblProductName 
          AutoSize        =   -1  'True

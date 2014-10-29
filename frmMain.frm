@@ -1,12 +1,12 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmMain 
    AutoRedraw      =   -1  'True
    Caption         =   "frmMain"
    ClientHeight    =   6195
    ClientLeft      =   165
-   ClientTop       =   855
+   ClientTop       =   735
    ClientWidth     =   7875
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -417,13 +417,6 @@ Err_Handler:
     'WindowTransparency Me.hwnd, byValue
 End Sub
 
-
-
-
-
-
-
-
 Private Sub Form_Load()
 Dim i As Integer
 For i = 1 To 5
@@ -437,7 +430,6 @@ End If
 Next
 On Error GoTo Err_Frmmain
 
-'Mklog "그냥 중단점 만들려고 만든 거임\"
 If Not Val(GetSetting(PROGRAM_KEY, "Program", "Trans", 255)) = 255 Then
     WindowTransparency Me.hwnd, byValue, , GetSetting(PROGRAM_KEY, "Program", _
         "Trans", 255) '투명화 지정-레지에서 불러옴
@@ -539,15 +531,9 @@ End If
 Unload Form2
 Erase MRUStr
 Mklog "프로그램 종료 처리 끝." '종료 끝 로그. 보통은 종료 시작 로그와 붙어 있어야 정상.
-'로그 저장 방식 변경으로 필요없음
-'frmMain.logsave.SaveFile AppPath & "\log.dat", rtfText
-
 End Sub
 
 Private Sub mnu이건비밀_Click()
-Exit Sub '이스터 에그 삭제
-'비밀이랑께 Me
-
 sdaDa:
 
 Dim s As String

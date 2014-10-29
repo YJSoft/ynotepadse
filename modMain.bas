@@ -1,5 +1,4 @@
 Attribute VB_Name = "modMain"
-
 '---------------------------------------------------------------------------------------
 ' Module    : modMain
 ' DateTime  : 2012-10-20 21:41
@@ -7,14 +6,14 @@ Attribute VB_Name = "modMain"
 ' Purpose   : Y's Notepad SE Main Module
 '---------------------------------------------------------------------------------------
 'Y's Notepad SE V.0.8
-'제작:유영재(yyj9411@naver.com)
-'All rights RESERVED. :-)
+'제작:YJSoft(yjsoft@yjsoft.pe.kr)
+'All rights RESERVED.
 
 '업데이트 로그
 '12/6:프로그램 안정화 작업
 '12/12:로그 파일 확장자 txt에서 dat로 변경, 로그 파일 이름 상수화(나중에 수정하기 편하게)
 '2012/3/8:스플래시 폼 처음에 표시 비활성화,Logsave RTF 컨트롤 삭제(직접 open문으로 열어서 작업)
-'MsgBox "frm"
+'2014/9/23: 소스코드 정리, 저작권 정리, 툴바 기본 표시로 변경
 Public MRUStr(5) As String
 Public Dirty As Boolean '파일이 변경되었는지 여부를 저장하는 변수입니다.
 Public insu As String '명령줄 인수 처리용 변수입니다.
@@ -52,7 +51,7 @@ Public FindReplace As Boolean
 ' Procedure : LoadMRUList
 ' DateTime  : 2013-04-03 13:36
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : MRU 목록을 불러옴
 '---------------------------------------------------------------------------------------
 '
 Public Sub LoadMRUList()
@@ -74,7 +73,7 @@ End Sub
 ' Procedure : ChkMRU
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : MRU 리스트를 체크 후 빈칸을 없앰
 '---------------------------------------------------------------------------------------
 '
 Public Sub ChkMRU()
@@ -114,7 +113,7 @@ End Sub
 ' Procedure : UpdateMRU
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : MRU 리스트 업데이트
 '---------------------------------------------------------------------------------------
 '
 Public Sub UpdateMRU(frmdta As Form)
@@ -143,7 +142,7 @@ End Sub
 ' Procedure : AddMRU
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : MRU에 파일 추가
 '---------------------------------------------------------------------------------------
 '
 Public Sub AddMRU(MRUSting As String)
@@ -190,7 +189,7 @@ End Sub
 ' Procedure : ClearMRU
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : MRU 초기화
 '---------------------------------------------------------------------------------------
 '
 Public Sub ClearMRU()
@@ -218,8 +217,8 @@ End Sub
 '---------------------------------------------------------------------------------------
 ' Procedure : EnCrypt
 ' DateTime  : 2012-08-05 20:05
-' Author    : PC1
-' Purpose   :
+' Author    : YJSoft
+' Purpose   : 파일 암호화
 '---------------------------------------------------------------------------------------
 '
 Public Function EnCrypt(ByRef sString As String) As String '암호화
@@ -245,7 +244,7 @@ End Function
 ' Procedure : DeCrypt
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : 파일 복호화
 '---------------------------------------------------------------------------------------
 '
 Public Function DeCrypt(ByRef sHexString As String) As String '복호화
@@ -276,7 +275,7 @@ End Function
 ' Procedure : IntToLong
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : Int를 Long 형식으로 변환
 '---------------------------------------------------------------------------------------
 '
 Private Function IntToLong(ByVal IntNum As Integer) As Long
@@ -296,7 +295,7 @@ End Function
 ' Procedure : LongToInt
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : Long을 Int 형식으로 변환
 '---------------------------------------------------------------------------------------
 '
 Private Function LongToInt(ByVal LongNum As Long) As Integer
@@ -316,7 +315,7 @@ End Function
 ' Procedure : FindWon
 ' DateTime  : 2013-04-03 13:37
 ' Author    : YJSoft
-' Purpose   :
+' Purpose   : 원 기호(역슬래시)를 찾음
 '---------------------------------------------------------------------------------------
 '
 Function FindWon(findstr As String) As Integer '문장 내에서 \의 위치를 찾아내어 그 다음 위치를 반환하는 함수입니다. \가 없다면 0이 반환됩니다.
@@ -534,7 +533,8 @@ End If
 
 debugmode:
 GetUserName
-If GetSetting(PROGRAM_KEY, "Option", "Toolbar", False) Then
+'Patch:툴바를 기본적으로 보이게 설정
+If GetSetting(PROGRAM_KEY, "Option", "Toolbar", True) Then
     frmMain.tbTools.Visible = True
 Else
     frmMain.tbTools.Visible = False
@@ -693,8 +693,6 @@ If Respond = vbYes Then '저장한다
         If Err.Number = 13 Then '형식이 맞지 않다!
             Cd.FileName = "" '열려진 파일 초기화
             Err.Clear
-            Mklog "또 형식이 맞지 않단다!!!\"
-            Mklog "버그다 버그!!!\"
             MsgBox "죄송합니다. 프로그램에서 잘못된 명령을 수행하여 작업이 중단됩니다...", vbCritical, "치명적인 오류"
             SaveCheck = False
             Exit Function '프로시저 실행 종료(버그)
