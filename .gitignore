@@ -142,3 +142,6 @@ $RECYCLE.BIN/
 /log.dat
 *.txt
 YNOTE_*.*
+/upx.exe
+/package/
+*.PDM

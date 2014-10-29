@@ -14,6 +14,7 @@ Attribute VB_Name = "modMain"
 '12/12:로그 파일 확장자 txt에서 dat로 변경, 로그 파일 이름 상수화(나중에 수정하기 편하게)
 '2012/3/8:스플래시 폼 처음에 표시 비활성화,Logsave RTF 컨트롤 삭제(직접 open문으로 열어서 작업)
 '2014/9/23: 소스코드 정리, 저작권 정리, 툴바 기본 표시로 변경
+
 Public MRUStr(5) As String
 Public Dirty As Boolean '파일이 변경되었는지 여부를 저장하는 변수입니다.
 Public insu As String '명령줄 인수 처리용 변수입니다.
@@ -37,8 +38,8 @@ Public FindText As String
 Public ReplaceText As String
 Public Lang As Boolean
 Public UTF8_Error As Boolean
-'Public Const YJSoft = "YJSoft"
 Public IsAboveNT As Boolean
+
 '여기부터는 프로그램용 선언
 Public Declare Function ShellAbout Lib "shell32.dll" Alias "ShellAboutA" (ByVal hwnd As Long, ByVal szApp As String, ByVal szOtherStuff As String, ByVal hIcon As Long) As Long '정보 대화 상자의 선언
 Public Declare Function SetFocus Lib "user32.dll" (ByVal hwnd As Long) As Long
@@ -507,8 +508,7 @@ End If
 If Not Command() = "" Then '명령줄 인수가 있다!
     If Command() = "/nodebug" Then GoTo debugmode
     Mklog "명령줄 인수 감지(" & Command() & ")"
-    If Left(Command(), 1) = Chr(34) Then '명령줄 인수에 "가 있다!(파일 이름 or 경로에 빈칸이 있으면 따옴표로 감싸져서 파일 이름이 들어옴.
-                                         '하지만 우린 필요 없다! 고로 삭제!
+    If Left(Command(), 1) = Chr(34) Then '명령줄 인수에 "가 있을경우 삭제처리
         insu = Mid(Command(), 2, Len(Command()) - 2)
         Mklog "명령줄 인수 처리(" & insu & ")" '처리된 파일 경로 로깅
     Else
@@ -522,8 +522,8 @@ Newfile = False
 frmMain.txtText.Text = StrConv(InputB(LOF(FreeFileNum), FreeFileNum), vbUnicode)
 Close #FreeFileNum
 FileName_Dir = insu
-frmMain.CD1.FileName = FileName_Dir '버그 원인 #1
-UpdateFileName frmMain, FileName_Dir '타이틀 변경(파일 이름으로..)
+frmMain.CD1.FileName = FileName_Dir
+UpdateFileName frmMain, FileName_Dir
 AddMRU insu '최근 연 파일에 추가
 Dirty = False
 Else
@@ -664,6 +664,7 @@ AppPath_Error:
 
     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure AppPath of Module modMain"
 End Function
+
 '#######################################################################
 '###########################SaveCheck 함수##############################
 '##############파일을 저장할 것인지를 묻는 함수입니다.##################
