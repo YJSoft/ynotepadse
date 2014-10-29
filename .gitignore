@@ -141,3 +141,7 @@ $RECYCLE.BIN/
 .DS_Store
 /log.dat
 *.txt
+YNOTE_*.*
+/upx.exe
+/package/
+*.PDM
